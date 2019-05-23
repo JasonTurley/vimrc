@@ -1,8 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Line numbers
-set number
+" Turn hybrid line numbers on
+set number relativenumber
 
 " Always show current position
 set ruler
