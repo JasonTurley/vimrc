@@ -47,7 +47,7 @@ set tabstop=8
 
 " Linebreak on # characters
 set lbr
-set tw=500
+set tw=79	" 0 for no text wrap
 
 set ai 		" Auto indent
 set si		" Smart indent
