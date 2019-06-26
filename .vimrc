@@ -1,3 +1,5 @@
+set spellfile=~/.vim/spell/en.utf-8.add
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -24,7 +26,7 @@ syntax enable
 colorscheme desert
 set background=dark
 
-" Set utf8 as standard encoding
+" Set UTF-8 as standard encoding
 set encoding=utf8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -35,23 +37,39 @@ set nobackup
 set nowb
 set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text, tab and indent
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Be smart when using tabs
+" configure expanding tabs for various file types
+au BufRead,BufNewFile *.py set expandtab
+au BufRead,BufNewFile *.c set noexpandtab
+au BufRead,BufNewFile *.h set noexpandtab
+au BufRead,BufNewFile Makefile* set noexpandtab
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure editor tabs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab
-
-" 1 tab == # spaces
-set shiftwidth=8
+set expandtab			" enter spaces when tab is pressed
+set textwidth=80		" break lines
 set tabstop=8
+set softtabstop=8
+set shiftwidth=8		" number of spaces to use for autoindent
+set autoindent
 
-" Linebreak on # characters
-set lbr
-set tw=79	" 0 for no text wrap
+" autocomplets provided that `set paste` is not set. When autocomplete is not
+" wanted, escape it vith ctrl + v
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O<TAB>
+inoremap {;<CR> {<CR>};<ESC>O<TAB>
 
-set ai 		" Auto indent
-set si		" Smart indent
-set wrap	" Wrap lines
+
+" make backspaces more powerful
+set backspace=indent,eol,start
+
+" Set autocompletion
+set wildmode=longest,list,full
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement options
@@ -62,7 +80,7 @@ set mouse=a
 " Remap jj to escape in insert mode
 inoremap jj <Esc>
 
-" swapping : and ; saves a lot of unneeded shiftin
+" swapping : and ; saves a lot of unneeded shifting
 noremap ; :
 noremap : ;
 
@@ -70,3 +88,6 @@ noremap : ;
 map j gj
 map k gk
 
+
+" Automatically delete all trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
