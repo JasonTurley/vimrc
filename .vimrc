@@ -36,11 +36,20 @@ set encoding=utf8
 set nobackup
 set nowb
 set noswapfile
+set fileformat=unix   " for github
 
-" configure expanding tabs for various file types
-au BufRead,BufNewFile *.py set expandtab
-au BufRead,BufNewFile *.c set noexpandtab
-au BufRead,BufNewFile *.h set noexpandtab
+" Filetype specific commands
+
+" Make python pep8 compliant
+au BufRead,BufNewFile *.py
+    \ set tabstop=4     |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4  |
+    \ set textwidth=79  |
+    \ set expandtab     |
+    \ set autoindent    |
+
+au BufRead,BufNewFile *.c, *.cpp, *.h, *.cc set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -49,9 +58,9 @@ au BufRead,BufNewFile Makefile* set noexpandtab
 set smarttab
 set expandtab			" enter spaces when tab is pressed
 set textwidth=80		" break lines
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8		" number of spaces to use for autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4		" number of spaces to use for autoindent
 set autoindent
 
 " autocomplets provided that `set paste` is not set. When autocomplete is not
@@ -63,7 +72,6 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O<TAB>
 inoremap {;<CR> {<CR>};<ESC>O<TAB>
-
 
 " make backspaces more powerful
 set backspace=indent,eol,start
@@ -88,6 +96,15 @@ noremap : ;
 map j gj
 map k gk
 
-
 " Automatically delete all trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Misc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable code folding for classes and methods
+set foldmethod=indent
+set foldlevel=99
+
+" Enable code folding with spacebar
+nnoremap <space> za
