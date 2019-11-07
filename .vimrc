@@ -23,7 +23,7 @@ set showmatch
 
 " Pretty colors
 syntax enable
-colorscheme desert
+colorscheme torte
 set background=dark
 
 " Set UTF-8 as standard encoding
@@ -49,8 +49,8 @@ au BufRead,BufNewFile *.py
     \ set expandtab     |
     \ set autoindent    |
 
-au BufRead,BufNewFile *.c, *.cpp, *.h, *.cc set noexpandtab
-au BufRead,BufNewFile Makefile* set noexpandtab
+au BufRead,BufNewFile Makefile*
+    \ set noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure editor tabs
