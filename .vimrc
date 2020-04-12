@@ -1,3 +1,14 @@
+call plug#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+Plug 'dylanaraps/wal.vim'
+
+call plug#end()
+
 set spellfile=~/.vim/spell/en.utf-8.add
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -23,7 +34,7 @@ set showmatch
 
 " Pretty colors
 syntax enable
-colorscheme torte
+"colorscheme wal
 set background=dark
 
 " Set UTF-8 as standard encoding
@@ -56,11 +67,11 @@ au BufRead,BufNewFile Makefile*
 " Configure editor tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab
-set expandtab			" enter spaces when tab is pressed
+""set expandtab			" enter spaces when tab is pressed
 set textwidth=80		" break lines
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4		" number of spaces to use for autoindent
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8		" number of spaces to use for autoindent
 set autoindent
 
 " autocomplets provided that `set paste` is not set. When autocomplete is not
@@ -70,7 +81,7 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O<TAB>
+inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O<TAB>
 
 " make backspaces more powerful
