@@ -1,16 +1,3 @@
-call plug#begin()
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-Plug 'dylanaraps/wal.vim'
-
-call plug#end()
-
-set spellfile=~/.vim/spell/en.utf-8.add
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,11 +21,15 @@ set showmatch
 
 " Pretty colors
 syntax enable
+
 "colorscheme wal
+colorscheme delek
 set background=dark
 
 " Set UTF-8 as standard encoding
 set encoding=utf8
+
+set spell spelllang=en_us
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files, backups and undo
