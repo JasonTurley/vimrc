@@ -1,4 +1,6 @@
 #!/bin/bash
 
-cp ./.vimrc ~/.vimrc
-echo "changes saved to ~/.vimrc"
+LOCAL=$(pwd)/.vimrc
+GLOBAL=~/.vimrc
+
+cp $LOCAL $GLOBAL && echo "saved $LOCAL (local) to $GLOBAL (global)"
