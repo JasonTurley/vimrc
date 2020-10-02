@@ -29,7 +29,12 @@ set background=dark
 " Set UTF-8 as standard encoding
 set encoding=utf8
 
+" enable spell checking
 set spell spelllang=en_us
+
+" disable spell checking for certain file types
+au BufRead,BufNewFile *.ini
+	\ set nospell
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files, backups and undo
@@ -39,8 +44,6 @@ set nobackup
 set nowb
 set noswapfile
 set fileformat=unix   " for github
-
-" Filetype specific commands
 
 " Make python pep8 compliant
 au BufRead,BufNewFile *.py
@@ -58,11 +61,8 @@ au BufRead,BufNewFile Makefile*
 " Configure editor tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set smarttab
-""set expandtab			" enter spaces when tab is pressed
-set textwidth=80		" break lines
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8		" number of spaces to use for autoindent
+set textwidth=80		" enter new line after N characters have been typed
+set shiftwidth=4		" number of spaces to use for autoindent
 set autoindent
 
 " autocomplets provided that `set paste` is not set. When autocomplete is not
@@ -72,7 +72,7 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
+inoremap {<CR> {<CR>}<ESC>O<TAB>
 inoremap {;<CR> {<CR>};<ESC>O<TAB>
 
 " make backspaces more powerful
